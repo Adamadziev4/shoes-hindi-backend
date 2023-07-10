@@ -121,7 +121,12 @@ const Category = ({ category, products, slug }: CategoryProps) => {
 
         {isLoading && (
           <div className="absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center gap-5 bg-white/[0.5]">
-            <img src="/svg/logo.svg" width={150} />
+            <img
+              src={"/svg/logo.svg"}
+              width={150}
+              height={150}
+              alt={"loading"}
+            />
             <span className="text-2xl font-medium">Loading...</span>
           </div>
         )}
