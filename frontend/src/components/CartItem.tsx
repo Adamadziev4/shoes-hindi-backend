@@ -2,7 +2,11 @@ import React from "react";
 import Image from "next/image";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useDispatch } from "react-redux";
-import { removeItem, updateItemCount, updateItemSize } from "store/cartSlice";
+import {
+  removeItem,
+  updateItemCount,
+  updateItemSize,
+} from "../../store/cartSlice";
 
 type CartItemProps = {
   id: number;

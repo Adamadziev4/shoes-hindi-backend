@@ -8,33 +8,31 @@ export const Footer = () => {
       <Wrapper className="flex flex-col justify-between gap-[50px] md:flex-row md:gap-0">
         <div className="flex flex-col gap-[50px] md:flex-row md:gap-[75px] lg:gap-[100px]">
           <div className="flex shrink-0 flex-col gap-3">
-            <div className="section1_footer_item">Find a store</div>
-            <div className="section1_footer_item">become a partner</div>
-            <div className="section1_footer_item">sign up for email</div>
-            <div className="section1_footer_item">send us feedback</div>
-            <div className="section1_footer_item">student discount</div>
+            <div className="section1_footer_item">Партнерам</div>
+            <div className="section1_footer_item">Найти магазин</div>
+            <div className="section1_footer_item">Оставить отзыв</div>
+            <div className="section1_footer_item">Скидка студентам</div>
           </div>
 
           <div className="flex shrink-0 gap-[50px] md:gap-[75px] lg:gap-[100px]">
             <div className="flex flex-col gap-3">
               <div className="font-ysabeau text-sm font-bold uppercase">
-                get help
+                Помощь{" "}
               </div>
-              <div className="section2_footer_item">Order Status</div>
-              <div className="section2_footer_item">Delivery</div>
-              <div className="section2_footer_item">Returns</div>
-              <div className="section2_footer_item">Payment Options</div>
-              <div className="section2_footer_item">Contact Us</div>
+              <div className="section2_footer_item">Оплата</div>
+              <div className="section2_footer_item">Доставка</div>
+              <div className="section2_footer_item">Контакты</div>
+              <div className="section2_footer_item">Статус заказа</div>
+              <div className="section2_footer_item">Условия возврата</div>
             </div>
 
             <div className="flex flex-col gap-3">
               <div className="font-ysabeau text-sm font-bold uppercase">
-                About
+                О нас
               </div>
-              <div className="section2_footer_item">News</div>
-              <div className="section2_footer_item">Careers</div>
-              <div className="section2_footer_item">Investors</div>
-              <div className="section2_footer_item">Sustainability</div>
+              <div className="section2_footer_item">Новости</div>
+              <div className="section2_footer_item">Работа</div>
+              <div className="section2_footer_item">Инвесторы</div>
             </div>
           </div>
         </div>
@@ -49,9 +47,9 @@ export const Footer = () => {
           <div className="footer_social">
             <FaYoutube size={20} />
           </div>
-          <div className="footer_social">
+          {/* <div className="footer_social">
             <FaInstagram size={20} />
-          </div>
+          </div> */}
         </div>
       </Wrapper>
       <Wrapper className="mt-10 flex flex-col justify-between gap-[10px] md:flex-row md:gap-0">
@@ -60,10 +58,9 @@ export const Footer = () => {
         </div>
 
         <div className="flex flex-wrap justify-center gap-2 text-center md:gap-5 md:text-left">
-          <div className="footer_down">Guides</div>
-          <div className="footer_down">Terms of Sale</div>
-          <div className="footer_down">Terms of Use</div>
-          <div className="footer_down">Privacy Policy</div>
+          <div className="footer_down">Условия продажи</div>
+          <div className="footer_down">Условия использования</div>
+          <div className="footer_down">Политика конфиденциальности</div>
         </div>
       </Wrapper>
     </footer>

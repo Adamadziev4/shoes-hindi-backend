@@ -1,17 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { getDiscountedPricePercentage } from "utils/helper";
+import { getDiscountedPricePercentage } from "../../../utils/helper";
 
-type ProductCardProps = {
-  name: string;
-  price: number;
-  original_price?: number;
-  slug: string;
-  thumbnail: Thumbnail;
-};
-
-export const ProductCard = (productData: ProductCardProps) => {
+export const ProductCard = (productData: ProductCard) => {
   return (
     <Link
       href={`/product/${productData.slug}`}

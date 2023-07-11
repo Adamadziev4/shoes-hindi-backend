@@ -25,7 +25,7 @@ export const Header = () => {
   const [lastScrollY, setLastScrollY] = React.useState(0);
   const [categories, setCategories] = React.useState<Category[]>([]);
 
-  const { cartItems } = useSelector((state: RootState) => state.cart);
+  const { cart, favorite } = useSelector((state: RootState) => state);
 
   const controlMenu = () => {
     if (window.scrollY > 200) {
@@ -56,7 +56,7 @@ export const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 z-20 flex h-[50px] w-full items-center justify-between bg-white shadow-sm transition-transform duration-300 md:h-[80px] ${show}`}
+      className={`sticky top-0 z-20 flex h-[70px] w-full items-center justify-between bg-white shadow-sm transition-transform duration-300 md:h-[80px] ${show}`}
     >
       <Wrapper className="flex h-[60px] items-center justify-between">
         <Link href="/">
@@ -65,7 +65,7 @@ export const Header = () => {
             width={40}
             height={40}
             alt="sneaker"
-            className="w-[40px] md:w-[50px]"
+            className="w-[45px] md:w-[50px]"
           />
         </Link>
 
@@ -84,50 +84,53 @@ export const Header = () => {
           />
         )}
 
-        <div className="flex items-center gap-3 text-black">
-          <div
+        <div className="flex items-center gap-5 text-black">
+          <Link
+            href={"/favorites"}
             className="relative flex h-8 w-8 cursor-pointer items-center
             justify-center rounded-full hover:bg-black/[0.05] md:h-12 md:w-12"
           >
-            <IoMdHeartEmpty className="text-[17px] md:text-[27px] " />
-            {/* <div
-              className="md:text[12px] absolute left-5 top-1 flex h-[14px] min-w-[14px]
+            <IoMdHeartEmpty className="text-[24px] md:text-[27px] " />
+            {favorite.favItems.length > 0 && (
+              <div
+                className="md:text[12px] absolute left-5 top-0 flex h-[15px] min-w-[15px]
               items-center justify-center rounded-full bg-red-600 pl-[1.5px]
-              text-[10px] text-white md:left-7 md:h-[20px] md:min-w-[20px]"
-            >
-              10
-            </div> */}
-          </div>
+              text-[12px] text-white md:left-7 md:top-0.5 md:h-[20px] md:min-w-[20px]"
+              >
+                {favorite.favItems.length}
+              </div>
+            )}
+          </Link>
 
           <Link
             href={"/cart"}
             className="relative flex h-8 w-8 cursor-pointer items-center
             justify-center rounded-full hover:bg-black/[0.05] md:h-12 md:w-12"
           >
-            <BsCart className="text-[15px] md:text-[25px] " />
-            {cartItems.length > 0 && (
+            <BsCart className="text-[21px] md:text-[25px] " />
+            {cart.cartItems.length > 0 && (
               <div
-                className="md:text[12px] absolute left-5 top-1 flex h-[14px] min-w-[14px]
+                className="md:text[12px] absolute left-5 top-0 flex h-[16px] min-w-[16px]
               items-center justify-center rounded-full bg-red-600 pl-[1.5px]
-              text-[10px] text-white md:left-7 md:h-[20px] md:min-w-[20px]"
+              text-[10px] text-white md:left-7 md:top-1 md:h-[20px] md:min-w-[20px]"
               >
-                {cartItems.length}
+                {cart.cartItems.length}
               </div>
             )}
           </Link>
 
           <div
             className="relative -mr-2 flex h-8 w-8 cursor-pointer
-            items-center justify-center rounded-full hover:bg-black/[0.05] md:h-12 md:w-12"
+            items-center justify-center rounded-full hover:bg-black/[0.05] md:hidden"
           >
             {mobileMenu ? (
               <VscChromeClose
-                className="text-[16px]"
+                className="text-[20px]"
                 onClick={() => setMobileMenu(false)}
               />
             ) : (
               <BiMenuAltRight
-                className="text-[20px]"
+                className="text-[24px]"
                 onClick={() => setMobileMenu(true)}
               />
             )}

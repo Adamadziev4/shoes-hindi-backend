@@ -1,9 +1,9 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { addToCart } from "store/cartSlice";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 import { ProductDetailsCarousel } from "@/components/Product/ProductDetailsCarousel";
 import { RecommendedProducts } from "@/components/RecommendedProducts";
@@ -12,10 +12,12 @@ import { Wrapper } from "@/components/Wrapper";
 import { fetchDataFromApi } from "utils/api";
 import { getDiscountedPricePercentage } from "utils/helper";
 
+import type { RootState } from "store";
 import type { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next/types";
 
 import "react-toastify/dist/ReactToastify.css";
+import { addToFav, removeFavItem } from "store/favSlice";
 
 type ProductDetailsProps = {
   product: Product;
@@ -62,6 +64,10 @@ const ProductDetails: NextPage<ProductDetailsProps> = ({
   const [selectedSize, setSelectedSize] = React.useState("");
   const [showError, setShowError] = React.useState(false);
 
+  const { favItems } = useSelector((state: RootState) => state.favorite);
+  const isFavorite = favItems.find(
+    (item) => item.slug === product.attributes.slug
+  );
   const dispatch = useDispatch();
 
   const onClickAddCart = () => {
@@ -75,6 +81,20 @@ const ProductDetails: NextPage<ProductDetailsProps> = ({
       dispatch(addToCart({ product, selectedSize }));
       notify();
     }
+  };
+
+  const onClickAddFav = () => {
+    if (!isFavorite)
+      dispatch(
+        addToFav({
+          name: product.attributes.name,
+          price: product.attributes.price,
+          slug: product.attributes.slug,
+          thumbnail: product.attributes.thumbnail,
+          original_price: product.attributes.original_price,
+        })
+      );
+    else dispatch(removeFavItem(isFavorite.slug));
   };
 
   const notify = () => {
@@ -114,7 +134,7 @@ const ProductDetails: NextPage<ProductDetailsProps> = ({
               </p>
               {product.attributes.original_price && (
                 <>
-                  <p className="text-[15px] font-medium line-through">
+                  <p className="text-[15.5px] font-medium line-through">
                     {product.attributes.original_price}₽
                   </p>
                   <p className="ml-auto text-base font-medium text-green-500">
@@ -129,13 +149,13 @@ const ProductDetails: NextPage<ProductDetailsProps> = ({
             </div>
 
             <div className="text-[15px] font-normal text-black/[0.5]">
-              incl. of taxes
+              вкл. НДС
             </div>
-            <div className="mb-20 text-[15px] font-normal text-black/[0.5]">
+            {/* <div className="mb-20 text-[15px] font-normal text-black/[0.5]">
               {`(Also includes all applicable duties)`}
-            </div>
+            </div> */}
 
-            <div className="mb-10">
+            <div className="mb-10 mt-14">
               <div className="mb-2 flex justify-between">
                 <div className="text-md font-semibold">Выберите размер</div>
                 <div className="text-md cursor-pointer font-normal text-black/[0.5]">
@@ -182,11 +202,12 @@ const ProductDetails: NextPage<ProductDetailsProps> = ({
             </button>
 
             <button
+              onClick={onClickAddFav}
               className="mb-10 flex w-full items-center justify-center gap-2 rounded-full
               border border-black py-4 text-lg font-medium transition-transform hover:opacity-75 active:scale-95"
             >
-              В избранное
-              <IoMdHeartEmpty size={20} />
+              {isFavorite ? "Добавлено" : "В избранное"}
+              <IoMdHeartEmpty size={22} fill={isFavorite && "red"} />
             </button>
 
             <div>

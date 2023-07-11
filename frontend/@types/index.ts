@@ -63,3 +63,11 @@ type CartItem = {
     thumbnail: Thumbnail;
   };
 };
+
+type ProductCard = {
+  name: string;
+  price: number;
+  original_price?: number;
+  slug: string;
+  thumbnail: Thumbnail;
+};

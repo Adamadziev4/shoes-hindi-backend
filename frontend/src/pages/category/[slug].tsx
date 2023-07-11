@@ -9,6 +9,7 @@ import { fetchDataFromApi } from "utils/api";
 
 import type { ParsedUrlQuery } from "querystring";
 import type { GetStaticPaths, GetStaticProps } from "next";
+import Image from "next/image";
 
 interface Params extends ParsedUrlQuery {
   slug: string;
@@ -38,7 +39,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-const limitOnPage = 1;
+const limitOnPage = 12;
 export const getStaticProps: GetStaticProps<{
   category: Category;
 }> = async ({ params }) => {
@@ -121,7 +122,7 @@ const Category = ({ category, products, slug }: CategoryProps) => {
 
         {isLoading && (
           <div className="absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center gap-5 bg-white/[0.5]">
-            <img
+            <Image
               src={"/svg/logo.svg"}
               width={150}
               height={150}

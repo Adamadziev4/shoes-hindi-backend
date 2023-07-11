@@ -28,11 +28,11 @@ export const Home = ({ productList }: HomeProps) => {
       <Wrapper>
         <div className="mx-auto my-[50px] max-w-[800px] text-center md:my-[80px]">
           <div className="leadeing-tight mb-5 text-[28px] font-[600] leading-10 md:text-[34px]">
-            Cushioning for Your Miles
+            Магазин кроссовок Sneakers
           </div>
           <div className="text-md md:text-lg">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe
-            adipisci non molestiae nostrum accusamus voluptate omnis mollitia.
+            Ниже вы можете увидеть часть нашего ассортимента <br />
+            Перейдите в Каталог, чтобы увидеть больше
           </div>
         </div>
 

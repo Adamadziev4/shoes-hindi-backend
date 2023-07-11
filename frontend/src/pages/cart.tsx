@@ -1,10 +1,9 @@
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { useSelector } from "react-redux";
 import { CartItem } from "@/components/CartItem";
 import { Wrapper } from "@/components/Wrapper";
 import type { RootState } from "store";
+import { EmptyProducts } from "@/components/EmptyProducts";
 
 const Cart = () => {
   const { cartItems, totalPrice } = useSelector(
@@ -67,27 +66,13 @@ const Cart = () => {
             </div>
           </>
         ) : (
-          <div className="flex flex-[2] flex-col items-center pb-[50px] md:-mt-14">
-            <Image
-              src="/empty-cart.jpg"
-              className="w-[300px] md:w-[400px]"
-              width={300}
-              height={300}
-              alt="Пустая корзина"
-            />
-            <span className="text-xl font-semibold">Ваша корзина пуста</span>
-            <span className="mt-4 text-center">
-              Кажется, вы ничего не добавили в свою корзину.
-              <br />
-              Перейдите в раздел "Категории" и выберите понравившийся товар
-            </span>
-            <Link
-              href="/"
-              className="mb-3 mt-8 rounded-full bg-black px-8 py-4 text-lg font-medium text-white transition-transform hover:opacity-75 active:scale-95"
-            >
-              Продолжить покупки
-            </Link>
-          </div>
+          <EmptyProducts
+            title="Ваша корзина пуста"
+            text={
+              "Кажется, вы ничего не добавили в свою корзину. </br> Перейдите в раздел &quot;Категории&quot; и выберите понравившийся товар"
+            }
+            btnText="Продолжить покупки"
+          />
         )}
       </Wrapper>
     </div>
