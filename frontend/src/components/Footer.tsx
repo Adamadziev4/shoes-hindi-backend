@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaYoutube } from "react-icons/fa";
 import { Wrapper } from "./Wrapper";
 
 export const Footer = () => {

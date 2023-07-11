@@ -52,10 +52,9 @@ const Cart = () => {
                     </div>
                   </div>
                   <div className="md:text-md mt-5 border-t py-5 text-sm">
-                    The subtotal reflects the total price of your order,
-                    including duties and taxes, before any applicable discounts.
-                    It does not include delivery costs and international
-                    transaction fees.
+                    Промежуточный итог отражает общую стоимость вашего заказа,
+                    включая пошлины и налоги, с учетом скидок. Сюда не входят
+                    расходы на доставку и сборы за международные транзакции.
                   </div>
                 </div>
 

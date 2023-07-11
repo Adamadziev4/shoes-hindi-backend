@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -19,11 +18,12 @@ export const ProductDetailsCarousel = ({
         className="productCarousel"
       >
         {images.data.map(({ id, attributes }) => (
-          <Image
-            width={100}
-            height={100}
+          <img
             key={id}
             src={attributes.url}
+            width={500}
+            height={500}
+            sizes="100%"
             alt="shoe"
           />
         ))}
